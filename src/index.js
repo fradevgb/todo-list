@@ -8,7 +8,7 @@ export const todoList = new TodoList();
 const tarea = new Todo('Aprender JavaScript!!');
 todoList.nuevoTodo(tarea);
 
-tarea.completado = true;
+// tarea.completado = true;
 
 console.log(todoList);
 

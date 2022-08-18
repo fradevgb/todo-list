@@ -31,6 +31,7 @@ export const crearTodoHtml = (todo) => {
 // Eventos
 txtInput.addEventListener('keyup', (e) => {
   if (e.keyCode === 13 && txtInput.value.length > 0) {
+    console.log(txtInput.value);
     const nuevoTodo = new Todo(txtInput.value.trim());
     todoList.nuevoTodo(nuevoTodo);
 
@@ -38,4 +39,18 @@ txtInput.addEventListener('keyup', (e) => {
 
     txtInput.value = '';
   }
+});
+
+divTodoList.addEventListener('click', (e) => {
+  const nombreElemento = e.target.localName; //input, label, button
+  const todoElemento = e.target.parentElement.parentElement;
+  const todoId = todoElemento.getAttribute('data-id');
+
+  if (nombreElemento.includes('input')) {
+    //click en el check
+    todoList.marcarCompletado(todoId);
+    todoElemento.classList.toggle('completed');
+  }
+
+  console.log(todoList);
 });
