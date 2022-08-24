@@ -1,3 +1,5 @@
+import { Todo } from './todo.class';
+
 export class TodoList {
   constructor() {
     // this.todos = [];
@@ -36,15 +38,10 @@ export class TodoList {
   }
 
   cargarLocalStorage() {
-    // if (localStorage.getItem('todo')) {
-    //   this.todos = JSON.parse(localStorage.getItem('todo'));
-    //   console.log('cargar local: ', this.todos);
-    //   console.log(typeof this.todos);
-    // } else {
-    //   this.todos = [];
-    // }
     this.todos = localStorage.getItem('todo')
       ? JSON.parse(localStorage.getItem('todo'))
       : [];
+    // this.todos = this.todos.map((obj) => Todo.fromJson(obj));
+    this.todos = this.todos.map(Todo.fromJson);
   }
 }
